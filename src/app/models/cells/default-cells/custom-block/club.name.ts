@@ -21,7 +21,8 @@ const info_image: InfoImage = new InfoImage(
   `Please type your club name. It can contain hyphens or spaces, but no digits.
 We need only one of your code or name.
 Correct your club name if you have moved clubs.
-Tell the TD if you regularly play in several clubs.`
+Tell the TD if you regularly play in several clubs.
+If you don't belong to any club type simply "No Club".`
 );
 
 
