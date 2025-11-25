@@ -12,7 +12,7 @@ const dropdown: Dropdown = new Dropdown(
     new Option('Youth – £??', false, 'youth-??'),
   ],
   'Click the info button "i" for an explanation of terms.',
-  'FEE',
+  'EXT-D-FEE',
   '38.3em',
   null,
   null,
