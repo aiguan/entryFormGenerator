@@ -1,13 +1,5 @@
-Select from the dropdown the type of cell you wish to create.
+Press one of the buttons below to select the type of cell you wish to create.
 <p class="spaced-container line-wrap">
-  <input [ngClass]="getButtonClass(pre_made_cell_mode)"
-         value="Pre made cell"
-         [type]="'button'"
-         (click)="enterPreMadeCellMode()">
-  <input [ngClass]="getButtonClass(false)"
-         value="Message"
-         [type]="'button'"
-         (click)="createAnnouncementCell()">
   <input [ngClass]="getButtonClass(one_line_cell_mode)"
          value="One line cell"
          [type]="'button'"
@@ -16,22 +8,23 @@ Select from the dropdown the type of cell you wish to create.
          value="Two lines cell"
          [type]="'button'"
          (click)="enterTwoLinesCellMode()">
+  <input [ngClass]="getButtonClass(pre_made_cell_mode)"
+         value="Pre made cell"
+         [type]="'button'"
+         (click)="enterPreMadeCellMode()">
+  <input [ngClass]="getButtonClass(deleted_cell_mode)"
+         value="Deleted cell"
+         [type]="'button'"
+         (click)="enterDeletedCellMode()">
+  <input [ngClass]="getButtonClass(false)"
+         value="Message"
+         [type]="'button'"
+         (click)="createAnnouncementCell()">
   <input [ngClass]="getButtonClass(false)"
          value="Empty cell"
          [type]="'button'"
          (click)="createEmptyCell()">
 </p>
-<div *ngIf="pre_made_cell_mode">
-  <p *ngIf="!preMadeCellsExist()">All pre made cells are already being used in the form. Add another type of cell</p>
-  <p *ngIf="preMadeCellsExist()">Click on the pre-made cell you wish to add and start customizing it.</p>
-  <div class="spaced-container line-wrap">
-    <app-cell *ngFor="let cell of getPreMadeCells()"
-              [cell]="cell"
-              (click)="onCellSelect(cell)"
-              class="cell-sample">
-    </app-cell>
-  </div>
-</div>
 <div *ngIf="one_line_cell_mode">
   <p>Click on the one line cell you wish to add and start customizing it.</p>
   <div class="spaced-container line-wrap">
@@ -50,6 +43,28 @@ Select from the dropdown the type of cell you wish to create.
                         (click)="onCellSelect(cell)"
                         class="cell-sample">
     </app-two-lines-cell>
+  </div>
+</div>
+<div *ngIf="pre_made_cell_mode">
+  <p *ngIf="!preMadeCellsExist()">All pre made cells are already being used in the form. Add another type of cell</p>
+  <p *ngIf="preMadeCellsExist()">Click on the pre-made cell you wish to add and start customizing it.</p>
+  <div class="spaced-container line-wrap">
+    <app-cell *ngFor="let cell of getPreMadeCells()"
+              [cell]="cell"
+              (click)="onCellSelect(cell)"
+              class="cell-sample">
+    </app-cell>
+  </div>
+</div>
+<div *ngIf="deleted_cell_mode">
+  <p *ngIf="!deletedCellsExist()">There are no recorded deleted cells. If you are sure you have deleted a cell you might find it under "Pre made cell"</p>
+  <p *ngIf="deletedCellsExist()">Click on the deleted cell you wish to reinsert add and start customizing it. If you cannot find the cell you deleted you might find it under "Pre made cell"</p>
+  <div class="spaced-container line-wrap">
+    <app-cell *ngFor="let cell of deleted_cells"
+              [cell]="cell"
+              (click)="onCellSelect(cell, true)"
+              class="cell-sample">
+    </app-cell>
   </div>
 </div>
 <p class="center-align-container">

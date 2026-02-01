@@ -3,11 +3,12 @@ import {TableGenerator} from "./models/table.generator";
 import {EGD_SEARCH_BLOCK} from "./models/EGD.search.block";
 import {CUSTOM_BLOCK} from "./models/custom.block";
 import {PLAYER_EMAIL_BLOCK} from "./models/player.email.block";
-import {CellPosition} from "./models/cell.position";
+import {GridPosition} from "./models/grid.position";
 import {DEFAULT_TOUR_CONFIG, TourConfig} from "./models/tour.config";
 import {PAGE_HEAD} from "./models/head";
 import {getSystemFields} from "./models/system.fields";
 import {processStringForInfoMessage} from "./models/string.formatting";
+import {TOOLTIP} from "./models/tooltip";
 
 @Component({
   selector: 'app-root',
@@ -23,10 +24,10 @@ export class AppComponent {
 
   info_message: string = this.DEFAULT_INFO_MESSAGE;
   edit_mode: boolean = true;
-  selected_cell: CellPosition = new CellPosition(null, null);
+  selected_cell: GridPosition = new GridPosition(null, null);
   editor_top: string = '0';
 
-  processOnCellSelect(cellPosition: CellPosition) {
+  processOnCellSelect(cellPosition: GridPosition) {
     this.selected_cell = cellPosition;
   }
 

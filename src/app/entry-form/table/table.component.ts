@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TableGenerator} from "../../models/table.generator";
 import {Cell} from "../../models/cells/cell";
-import {CellPosition} from "../../models/cell.position";
+import {GridPosition} from "../../models/grid.position";
 
 @Component({
   selector: 'app-table',
@@ -12,7 +12,7 @@ export class TableComponent {
   @Input() table: TableGenerator = new TableGenerator([]);
   @Input() edit_mode: boolean = false;
 
-  @Output() on_cell_select= new EventEmitter<CellPosition>();
+  @Output() on_cell_select= new EventEmitter<GridPosition>();
   @Output() on_cell_describe= new EventEmitter<string>();
 
   processCellSelection(row_index: number, cell_index: number, cell: Cell) {
@@ -21,11 +21,11 @@ export class TableComponent {
       // Deselect if selected.
       if (cell.isInEditMode()) {
         cell.exitEditMode();
-        this.on_cell_select.emit(new CellPosition(null, null))
+        this.on_cell_select.emit(new GridPosition(null, null))
       } else { // Otherwise deselect everything else and select only this cell.
         this.table.exitEditMode();
         cell.editing = true;
-        this.on_cell_select.emit(new CellPosition(row_index, cell_index))
+        this.on_cell_select.emit(new GridPosition(row_index, cell_index))
       }
     }
   }

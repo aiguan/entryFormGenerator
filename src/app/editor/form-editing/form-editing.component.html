@@ -12,13 +12,16 @@
   <p *ngIf="!edit_mode">Press the button above in order to enter edit mode.</p>
 
   <app-cell-creation *ngIf="edit_mode && !new_cell_position.isNull()"
+                     [deleted_cells]="deleted_cells"
                      (create_cell)="onCellCreation($event)"
+                     (re_insert_cell)="onCellReInsert($event)"
                      (back)="abortCellCreation()">
   </app-cell-creation>
 
+  <!-- region cell editing  -->
   <div *ngIf="edit_mode && new_cell_position.isNull() && selected_cell.isNull() ">
     <p>
-      Click on one of the cells in the form on the left in order to edit it or add a new cell in its vicinity.
+      Click on one of the cells in the form on the left (middle section) in order to edit it or add a new cell in its vicinity.
       Keep in mind that there are some empty cells used for spacing.
     </p>
     <p>
@@ -30,9 +33,13 @@
              [type]="'button'"
              (click)="enterCellCreation(custom_block.getNewCellPosition())">
     </p>
+    <div class="hor-line"></div>
   </div>
 
   <div *ngIf="edit_mode && new_cell_position.isNull() && !selected_cell.isNull() ">
+    <p>
+      Edit/delete the selected cell, add a new cell on its vicinity or press deselect in order to go back.
+    </p>
     <app-cell-editing [cell]="custom_block.getCell(selected_cell)"></app-cell-editing>
     <div class="hor-line"></div>
     <div>
@@ -66,9 +73,18 @@
                  [type]="'button'"
                  (click)="enterCellCreation(selected_cell.getPositionBelow())">
       </span>
+      <div class="hor-line"></div>
+
+      <span class="center-align-container">
+        <input class="in-control tf_larger"
+               value="Back"
+               [type]="'button'"
+               (click)="deselectCell()">
+      </span>
     </div>
     <div class="hor-line"></div>
   </div>
+  <!-- endregion -->
 
   <p class="spaced-container">
     <span>Once you are done with the editing press the "Next" button.</span>

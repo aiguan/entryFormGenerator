@@ -21,11 +21,14 @@ import {Announcement} from "../../../models/cells/form-entries/announcement";
 })
 export class CellCreationComponent {
   @Input() custom_block = CUSTOM_BLOCK;
+  @Input() deleted_cells: Cell[] = [];
 
   @Output() create_cell = new EventEmitter<Cell>();
+  @Output() re_insert_cell = new EventEmitter<Cell>();
   @Output() back = new EventEmitter<void>();
 
   pre_made_cell_mode: boolean = false;
+  deleted_cell_mode: boolean = false;
   one_line_cell_mode: boolean = true;
   two_lines_cell_mode: boolean = false;
 
@@ -39,6 +42,7 @@ export class CellCreationComponent {
 
   deselectAll() {
     this.pre_made_cell_mode = false;
+    this.deleted_cell_mode = false;
     this.one_line_cell_mode = false;
     this.two_lines_cell_mode = false;
   }
@@ -46,6 +50,11 @@ export class CellCreationComponent {
   enterPreMadeCellMode() {
     this.deselectAll();
     this.pre_made_cell_mode = true;
+  }
+
+  enterDeletedCellMode() {
+    this.deselectAll();
+    this.deleted_cell_mode = true;
   }
 
   enterOneLineCellMode() {
@@ -79,6 +88,10 @@ export class CellCreationComponent {
 
   preMadeCellsExist() :boolean {
     return this.getPreMadeCells().length !== 0;
+  }
+
+  deletedCellsExist() :boolean {
+    return this.deleted_cells.length !== 0;
   }
 
   getOneLineCells() :OneLineCell[] {
@@ -128,7 +141,11 @@ export class CellCreationComponent {
     ];
   }
 
-  onCellSelect(cell: Cell) {
-    this.create_cell.emit(cell);
+  onCellSelect(cell: Cell, is_deleted_cell: boolean = false) {
+    if (is_deleted_cell){
+      this.re_insert_cell.emit(cell);
+    } else {
+      this.create_cell.emit(cell);
+    }
   }
 }

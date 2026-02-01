@@ -1,5 +1,5 @@
 import {Cell, EmptyCell} from "./cells/cell";
-import {CellPosition, getPositiveResidue} from "./cell.position";
+import {GridPosition, getPositiveResidue} from "./grid.position";
 import {throwError} from "rxjs";
 import {EmptyRow, Row} from "./row";
 import {OneLineCell} from "./cells/one.line.cell";
@@ -35,7 +35,7 @@ export class TableGenerator {
     this.rows[getPositiveResidue(position, this.getNRows())] = new_row;
   }
 
-  addCell(cell: Cell, position: CellPosition): void {
+  addCell(cell: Cell, position: GridPosition): void {
     if (position.isNull()) {
       return;
     }
@@ -56,7 +56,7 @@ export class TableGenerator {
     return;
   }
 
-  removeCell(position: CellPosition): void {
+  removeCell(position: GridPosition): void {
     if (position.isNull()) {
       return;
     }
@@ -73,7 +73,7 @@ export class TableGenerator {
     return;
   }
 
-  getCell(position: CellPosition): EmptyCell | OneLineCell | TwoLinesCell {
+  getCell(position: GridPosition): EmptyCell | OneLineCell | TwoLinesCell {
     if (position.isNull()) {
       throwError(() => new Error('position should not be null to get cell.'));
     }
@@ -82,7 +82,7 @@ export class TableGenerator {
     return row.getCell(position.getCellIndex(row.getNCells()));
   }
 
-  changeCell(new_cell: Cell, position: CellPosition){
+  changeCell(new_cell: Cell, position: GridPosition){
     if (position.isNull()) {
       throwError(() => new Error('position should not be null to get cell.'));
     }
@@ -130,7 +130,7 @@ export class TableGenerator {
     return this.rows.length;
   }
 
-  getNewCellPosition(): CellPosition {
-    return new CellPosition(this.getNRows(), 0, true);
+  getNewCellPosition(): GridPosition {
+    return new GridPosition(this.getNRows(), 0, true);
   }
 }

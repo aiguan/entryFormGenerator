@@ -1,5 +1,5 @@
 import {Cell, EmptyCell} from "./cells/cell";
-import {getPositiveResidue} from "./cell.position";
+import {getPositiveResidue} from "./grid.position";
 
 export class Row {
   constructor(public cells: Cell[]) {

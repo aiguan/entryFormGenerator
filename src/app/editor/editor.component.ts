@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TableGenerator} from "../models/table.generator";
 import {CUSTOM_BLOCK} from "../models/custom.block";
-import {CellPosition} from "../models/cell.position";
+import {GridPosition} from "../models/grid.position";
 import {DEFAULT_TOUR_CONFIG, TourConfig} from "../models/tour.config";
 
 @Component({
@@ -12,7 +12,7 @@ import {DEFAULT_TOUR_CONFIG, TourConfig} from "../models/tour.config";
 export class EditorComponent{
   @Input() custom_block: TableGenerator = CUSTOM_BLOCK;
   @Input() tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
-  @Input() selected_cell: CellPosition = new CellPosition(null, null);
+  @Input() selected_cell: GridPosition = new GridPosition(null, null);
   @Input() edit_mode: boolean = true;
 
   @Output() finish = new EventEmitter<void>();

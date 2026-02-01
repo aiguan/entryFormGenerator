@@ -1,6 +1,6 @@
 import {throwError} from "rxjs";
 
-export class CellPosition {
+export class GridPosition {
 
   constructor(private row_index: number | null,
               private cell_index: number | null,
@@ -19,36 +19,36 @@ export class CellPosition {
     return this.row_index === null || this.cell_index === null;
   }
 
-  getPositionLeft() :CellPosition {
+  getPositionLeft() :GridPosition {
     if (this.isNull()) {
-      throwError(() => Error('Cannot a position left of an empty position.'));
+      throwError(() => Error('Cannot find a position left of an empty position.'));
     }
-    return new CellPosition(this.row_index, this.cell_index, false)
+    return new GridPosition(this.row_index, this.cell_index, false)
   }
 
-  getPositionRight() :CellPosition {
+  getPositionRight() :GridPosition {
     if (this.isNull()) {
-      throwError(() => Error('Cannot a position right of an empty position.'));
+      throwError(() => Error('Cannot find a position right of an empty position.'));
     }
-    return new CellPosition(this.row_index, this.getCellIndex() + 1, false)
+    return new GridPosition(this.row_index, this.getCellIndex() + 1, false)
   }
 
-  getPositionAbove() :CellPosition {
+  getPositionAbove() :GridPosition {
     if (this.isNull()) {
-      throwError(() => Error('Cannot a position above an empty position.'));
+      throwError(() => Error('Cannot find a position above an empty position.'));
     }
-    return new CellPosition(this.row_index, 0, true)
+    return new GridPosition(this.row_index, 0, true)
   }
 
-  getPositionBelow() :CellPosition {
+  getPositionBelow() :GridPosition {
     if (this.isNull()) {
-      throwError(() => Error('Cannot a position below an empty position.'));
+      throwError(() => Error('Cannot find a position below an empty position.'));
     }
-    return new CellPosition(this.getRowIndex() + 1, 0, true)}
+    return new GridPosition(this.getRowIndex() + 1, 0, true)}
 
   private getIndex(numerator: number | null, denominator: number | null): number {
     if (this.isNull()) {
-      throwError(() => Error('Cannot get index if cell position is empty.'));
+      throwError(() => Error('Cannot get index if position is empty.'));
     }
     if (denominator !== null && numerator !== null) {
       return getPositiveResidue(numerator, denominator);

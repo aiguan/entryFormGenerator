@@ -4,6 +4,7 @@ import {EGD_SEARCH_BLOCK} from "../models/EGD.search.block";
 import {CUSTOM_BLOCK} from "../models/custom.block";
 import {PLAYER_EMAIL_BLOCK} from "../models/player.email.block";
 import {CellPosition} from "../models/cell.position";
+import {GridPosition} from "../models/grid.position";
 
 
 @Component({
@@ -17,11 +18,11 @@ export class EntryFormComponent {
   @Input() player_email_block: TableGenerator = PLAYER_EMAIL_BLOCK;
   @Input() edit_mode: boolean = true
 
-  @Output() on_cell_select = new EventEmitter<CellPosition>();
+  @Output() on_cell_select = new EventEmitter<GridPosition>();
   @Output() change_height = new EventEmitter<number>();
   @Output() on_cell_describe= new EventEmitter<string>();
 
-  processOnCellSelect(cellPosition: CellPosition) {
+  processOnCellSelect(cellPosition: GridPosition) {
     this.on_cell_select.emit(cellPosition);
   }
 
