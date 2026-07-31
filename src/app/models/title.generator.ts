@@ -25,6 +25,12 @@ export class TitleGenerator {
     return;
   }
 
+  removeAllParagraphs(): void {
+    // Remove an element in the array.
+    this.paragraphs = [];
+    return;
+  }
+
   getParagraph(position: number): Paragraph {
     // Get the requested row.
     return this.paragraphs[getPositiveResidue(position, this.getNParagraphs())];

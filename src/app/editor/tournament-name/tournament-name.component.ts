@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {DEFAULT_TOUR_CONFIG, TourConfig} from "../../models/tour.config";
+import {TitleGenerator} from "../../models/title.generator";
+import {reset_title_block, TITLE_BLOCK} from "../../models/title.region";
 
 @Component({
   selector: 'app-tournament-name',
@@ -8,6 +10,7 @@ import {DEFAULT_TOUR_CONFIG, TourConfig} from "../../models/tour.config";
 })
 export class TournamentNameComponent {
   @Input() tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
+  @Input() title_block: TitleGenerator = TITLE_BLOCK;
 
   @Output() prev_step = new EventEmitter<void>();
   @Output() next_step = new EventEmitter<void>();
@@ -17,6 +20,7 @@ export class TournamentNameComponent {
     if (this.tour_config.getTourName() === '') {
       alert('Tournament name must be specified.');
     } else {
+      reset_title_block(this.title_block, this.tour_config.getEmptyTourTitle());
       this.next_step.emit()
     }
   }

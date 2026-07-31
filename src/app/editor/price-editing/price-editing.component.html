@@ -1,0 +1,85 @@
+<fieldset class="bk-fields">
+  <p>
+    Use the following form to select the price list of your tournament. You can remove an option by simply leaving the price blank or at a negative value.
+    To see an explanation of each term hover the mouse over it.
+    You will be able to further edit these options, add new ones or even remove the dropdown completely in the next step.
+  </p>
+  <div class="spaced-around-container">
+  <table class="price-table">
+    <tr style="font-weight: bold;">
+      <th style="font-weight: bold" class="price-table-name-cell">Category</th>
+      <th style="font-weight: bold" class="price-table-price-cell">price £</th>
+    </tr>
+    <tr>
+      <td class="price-table-name-cell"
+          matTooltip="Price for adult (over 18) BGA members"
+          [matTooltipShowDelay]="SHOW_DELAY"
+          [matTooltipPosition]="POSITION">
+        {{adult_BGA_name}}
+      </td>
+      <td class="price-table-price-cell">
+        <input class="short-input"
+               autocomplete="off"
+               type="number"
+               [(ngModel)]="adult_BGA_price"
+               (change)="updatePrices()">
+      </td>
+    </tr>
+    <tr>
+      <td class="price-table-name-cell"
+          matTooltip="Price for adults (over 18) that are NOT BGA members"
+          [matTooltipShowDelay]="SHOW_DELAY"
+          [matTooltipPosition]="POSITION">
+        {{adult_non_BGA_name}}
+      </td>
+      <td class="price-table-price-cell">
+        <input class="short-input"
+               autocomplete="off"
+               type="number"
+               [(ngModel)]="adult_non_BGA_price"
+               (change)="updatePrices()">
+      </td>
+    </tr>
+    <tr>
+      <td class="price-table-name-cell"
+          matTooltip="Price for adults (over 18) that do not have an EGD rating"
+          [matTooltipShowDelay]="SHOW_DELAY"
+          [matTooltipPosition]="POSITION">
+        {{adult_first_name}}
+      </td>
+      <td class="price-table-price-cell">
+        <input class="short-input"
+               autocomplete="off"
+               type="number"
+               [(ngModel)]="adult_first_price"
+               (change)="updatePrices()">
+      </td>
+    </tr>
+    <tr>
+      <td class="price-table-name-cell"
+          matTooltip="Price for youth (under 18)"
+          [matTooltipShowDelay]="SHOW_DELAY"
+          [matTooltipPosition]="POSITION">
+        {{youth_name}}
+      </td>
+      <td class="price-table-price-cell">
+        <input class="short-input"
+               autocomplete="off"
+               type="number"
+               [(ngModel)]="youth_price"
+               (change)="updatePrices()">
+      </td>
+    </tr>
+  </table>
+  </div>
+  <p class="spaced-between-container">
+    <input class="in-control tf_larger"
+           value="Back"
+           type="button"
+           (click)="prev_step.emit()">
+    <input class="in-control tf_larger"
+           value="Next"
+           type="button"
+           (click)="onNextStep()">
+  </p>
+</fieldset>

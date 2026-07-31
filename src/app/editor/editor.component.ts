@@ -5,6 +5,8 @@ import {GridPosition} from "../models/grid.position";
 import {DEFAULT_TOUR_CONFIG, TourConfig} from "../models/tour.config";
 import {TitleGenerator} from "../models/title.generator";
 import {TITLE_BLOCK} from "../models/title.region";
+import {Dropdown} from "../models/cells/form-entries/dropdown";
+import {PRICE_DROPDOWN} from "../models/cells/default-cells/custom-block/price.dropdown";
 
 @Component({
   selector: 'app-editor',
@@ -15,9 +17,10 @@ export class EditorComponent{
   @Input() custom_block: TableGenerator = CUSTOM_BLOCK;
   @Input() title_block: TitleGenerator = TITLE_BLOCK;
   @Input() tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
+  @Input() price_dropdown: Dropdown = PRICE_DROPDOWN.dropdown;
   @Input() selected_cell: GridPosition = new GridPosition(null, null);
   @Input() selected_span: GridPosition = new GridPosition(null, null);
-  @Input() edit_mode: "form" | "title" | null = "form";
+  @Input() edit_mode: "form" | "title" | null = null;
 
   @Output() finish = new EventEmitter<void>();
   @Output() custom_block_change = new EventEmitter<TableGenerator>();
@@ -28,7 +31,10 @@ export class EditorComponent{
   editing_step: number = 0;
 
   changeEditingStep(change: number) {
-    this.editing_step = Math.min(Math.max(0, change + this.editing_step), 6);
+    this.editing_step = Math.min(Math.max(0, change + this.editing_step), 7);
+    if (this.editing_step !== 3) {
+      this.edit_mode = null;
+    }
   }
 
   onFinish() {

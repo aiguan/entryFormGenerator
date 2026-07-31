@@ -1,17 +1,26 @@
 <fieldset class="bk-fields">
   <p>
     Write below the title of your tournament. That is the text that will appear on the window tag
-    (e.g. "BGA Entry form generator" for this page).
+    (e.g. "BGA Entry form generator" for this page). This is also used as a placeholder for the
+    title above the entry form. You can also select the width of the BGA logo.
+    You can further edit or remove both these values in the next step.
   </p>
   <p>
     If left blank the title will default to "{{tour_config.getEmptyTourTitle()}}" which is obtained based on the
     previously provided tournament name (i.e. "{{tour_config.getTourName()}}").
   </p>
-  <p class="left-align-container">
+  <p class="spaced-between-container">
     <input type="text"
            [placeholder]="tour_config.getEmptyTourTitle()"
            [(ngModel)]="tour_config.tour_title"
-           (change)="tour_title_change.emit(tour_config.getTourTitle())">
+           (change)="onTitleChange()">
+    <span>
+      Logo width&nbsp;&nbsp;&nbsp;&nbsp;
+      <input class="short-input"
+             type="number"
+             [(ngModel)]="logo_width"
+             (change)="onTitleChange()"/>
+    </span>
   </p>
   <p class="spaced-between-container">
     <input class="in-control tf_larger"

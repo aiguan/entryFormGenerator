@@ -55,6 +55,10 @@ export class Dropdown extends FormEntry {
     this.options.splice(index, 1);
   }
 
+  removeAllOptions() {
+    this.options = [];
+  }
+
   override getHTMLCode(): string {
     // Initiate the select object.
     let HTMLCode: string = `

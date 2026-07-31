@@ -3,17 +3,11 @@
     Write below the name of the tournament. It should be a short name of a single word (2 in special cases) usually
     coinciding with the name of the city/town the tournament will be held in.
   </p>
-  <p class="left-align-container">
+  <p class="spaced-between-container">
     <input type="text"
            placeholder="club name"
            [(ngModel)]="tour_config.tour_name"
            (change)="tour_name_change.emit(tour_config.getTourName())">
-  </p>
-  <p class="spaced-between-container">
-    <input class="in-control tf_larger"
-           value="Back"
-           type="button"
-           (click)="prev_step.emit()">
     <input class="in-control tf_larger"
            value="Next"
            type="button"

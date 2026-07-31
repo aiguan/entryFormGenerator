@@ -11,6 +11,8 @@ import {getSystemFields} from "./models/system.fields";
 import {processStringForInfoMessage} from "./models/string.formatting";
 import {TOOLTIP} from "./models/tooltip";
 import {TITLE_BLOCK} from "./models/title.region";
+import {Dropdown} from "./models/cells/form-entries/dropdown";
+import {PRICE_DROPDOWN} from "./models/cells/default-cells/custom-block/price.dropdown";
 
 @Component({
   selector: 'app-root',
@@ -23,6 +25,7 @@ export class AppComponent {
   player_email_block: TableGenerator = PLAYER_EMAIL_BLOCK;
   title_block: TitleGenerator = TITLE_BLOCK;
   tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
+  price_dropdown: Dropdown = PRICE_DROPDOWN.dropdown;
   DEFAULT_INFO_MESSAGE: string = `Either hover or click<br>on an info icon <span class="icon-i-new"> i </span><br>for help.<br>The fields with a "*" symbol are required.`;
 
   info_message: string = this.DEFAULT_INFO_MESSAGE;

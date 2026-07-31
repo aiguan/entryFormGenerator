@@ -8,11 +8,11 @@ import {CLUB_NAME} from "./cells/default-cells/custom-block/club.name";
 import {GRADE} from "./cells/default-cells/custom-block/grade";
 import {STRENGTH} from "./cells/default-cells/custom-block/strength";
 import {PLAY_ALL} from "./cells/default-cells/custom-block/play.all";
-import {MEMBER} from "./cells/default-cells/custom-block/member";
-import {YOUTH} from "./cells/default-cells/custom-block/youth";
-import {FIRST} from "./cells/default-cells/custom-block/first";
 import {PUBLIC} from "./cells/default-cells/custom-block/public";
 import {EmptyRow, Row} from "./row";
+import {PRICE_SEPARATOR} from "./cells/default-cells/custom-block/price.separator";
+import {PRICE_ANNOUNCEMENT} from "./cells/default-cells/custom-block/price.announcement";
+import {PRICE_DROPDOWN} from "./cells/default-cells/custom-block/price.dropdown";
 
 export const CUSTOM_BLOCK = new TableGenerator(
   [
@@ -24,9 +24,9 @@ export const CUSTOM_BLOCK = new TableGenerator(
     new Row([GRADE, STRENGTH]),
     new EmptyRow(),
     new Row([PLAY_ALL]),
-    new Row([MEMBER]),
-    new Row([YOUTH]),
-    new Row([FIRST]),
     new Row([PUBLIC]),
+    new Row([PRICE_SEPARATOR]),
+    new Row([PRICE_ANNOUNCEMENT]),
+    new Row([PRICE_DROPDOWN]),
   ]
 );

@@ -47,6 +47,7 @@ import { SpanEditingComponent } from './editor/form-editing/span-editing/span-ed
 import { TextSpanEditingComponent } from './editor/form-editing/span-editing/text-span-editing/text-span-editing.component';
 import { ImageSpanEditingComponent } from './editor/form-editing/span-editing/image-span-editing/image-span-editing.component';
 import { ParagraphEditingComponent } from './editor/form-editing/span-editing/paragraph-editing/paragraph-editing.component';
+import { PriceEditingComponent } from './editor/price-editing/price-editing.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { ParagraphEditingComponent } from './editor/form-editing/span-editing/pa
     TextSpanEditingComponent,
     ImageSpanEditingComponent,
     ParagraphEditingComponent,
+    PriceEditingComponent,
   ],
   imports: [
     BrowserModule,

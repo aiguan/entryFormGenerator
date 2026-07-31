@@ -12,6 +12,9 @@ import {MEMBER} from "./member";
 import {YOUTH} from "./youth";
 import {PUBLIC} from "./public";
 import {STRENGTH} from "./strength";
+import {PRICE_SEPARATOR} from "./price.separator";
+import {PRICE_ANNOUNCEMENT} from "./price.announcement";
+import {PRICE_DROPDOWN} from "./price.dropdown";
 
 export const ALL_DEFAULT_CUSTOM_CELLS: Cell[] = [
   CLUB_CODE,
@@ -26,5 +29,8 @@ export const ALL_DEFAULT_CUSTOM_CELLS: Cell[] = [
   YOUTH,
   PLAY_ALL,
   PUBLIC,
-  STRENGTH
+  STRENGTH,
+  PRICE_SEPARATOR,
+  PRICE_ANNOUNCEMENT,
+  PRICE_DROPDOWN
 ];
