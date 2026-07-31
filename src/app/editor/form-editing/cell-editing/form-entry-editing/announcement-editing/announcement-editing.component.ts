@@ -30,8 +30,10 @@ export class AnnouncementEditingComponent {
       font_size !== 'smaller' &&
       font_size !== 'x-large' &&
       font_size !== 'xx-large' &&
+      font_size !== 'xxx-large' &&
       font_size !== 'x-small' &&
-      font_size !== 'xx-small'
+      font_size !== 'xx-small' &&
+      font_size !== 'xxx-small'
     ) {
       this.announcement.font_size = 'inherit';
     } else {

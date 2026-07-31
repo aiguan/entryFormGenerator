@@ -1,0 +1,11 @@
+<p style="display: flex; position: relative; width: 100%;"
+   [style.justify-content]="paragraph.justify_content"
+   [style.font-size]="paragraph.font_size"
+   [style.font-weight]="paragraph.font_weight">
+  <app-span *ngFor="let span of paragraph.spans; let i = index;"
+            [span]="span"
+            [ngStyle]="span.getBackgroundStyle(edit_mode)"
+            (click)="processSpanSelection(i)">
+
+  </app-span>
+</p>

@@ -1,4 +1,4 @@
-<p class="spaced-container">
+<p class="spaced-between-container">
 <!--  <span matTooltip="This is the unique identifier of this cell. Make sure it's different from all others but use only letters and underscores ('_') to define it."
         [matTooltipShowDelay]="SHOW_DELAY"
         [matTooltipPosition]="POSITION">
@@ -65,7 +65,7 @@
        type="button"
        (click)="toggleShowOptions()">
 <div *ngIf="show_options">
-  <span *ngFor="let option of dropdown.options; index as i" class="spaced-container">
+  <span *ngFor="let option of dropdown.options; index as i" class="spaced-between-container">
     <span>
       <span>
         Name
@@ -122,7 +122,7 @@
 
 <div class="hor-line"></div>
 
-<p class="spaced-container">
+<p class="spaced-between-container">
   <span>
     <span>
       Width {{dropdown.width === null || dropdown.width === ''? '' : '('+dropdown.width+')'}}

@@ -1,7 +1,14 @@
-.spaced-container {
+.spaced-between-container {
   display: flex;
   position: relative;
   justify-content: space-between;
+  width: 100%;
+}
+
+.spaced-around-container {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
   width: 100%;
 }
 

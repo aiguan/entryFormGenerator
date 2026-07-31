@@ -1,0 +1,8 @@
+<div *ngIf="title.paragraphs.length != 0" class="tour-title">
+  <app-paragraph *ngFor="let paragraph of title.paragraphs; let i = index"
+                 [paragraph]="paragraph"
+                 [edit_mode]="edit_mode"
+                 (on_span_select)="processSpanSelection(i, $event)">
+
+  </app-paragraph>
+</div>

@@ -8,7 +8,6 @@ import {sanitizeString} from "../../../../../models/string.formatting";
   templateUrl: './text-input-editing.component.html',
   styleUrls: [
     './text-input-editing.component.css',
-    '../../cell-editing.component.css',
     '../../../form-editing.component.css',
     '../../../../editor.component.css',
   ]

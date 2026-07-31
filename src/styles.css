@@ -86,6 +86,10 @@ input[type="checkbox"] {
 
 .icon-i-new {
   font-weight: bold;  font-style: italic;
-  font-family: "Tex Gyre Bonum", Helvetica;
+  font-family: "Tex Gyre Bonum", Helvetica, serif;
+}
+
+.tour-title {
+
 }
 

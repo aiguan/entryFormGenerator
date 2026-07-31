@@ -1,0 +1,52 @@
+<p class="spaced-between-container">
+  <span>
+    <span>
+      Font size
+    </span>
+    <br>
+    <select #font_size_selection (change)="onFontSizeChange(font_size_selection.value)"
+            matTooltip="This is the font size of the paragraph's text. Choose one among the available options."
+            [matTooltipShowDelay]="SHOW_DELAY"
+            [matTooltipPosition]="POSITION">
+      <option *ngFor="let font_size of FONT_SIZE_OPTIONS"
+              [value]="font_size"
+              [selected]="font_size === paragraph.font_size? 'selected': ''">
+        {{font_size}}
+      </option>
+    </select>
+  </span>
+
+  <span>
+    <span>
+      Font weight
+    </span>
+    <br>
+    <select #font_weight_selection (change)="onFontWeightChange(font_weight_selection.value)"
+            matTooltip="This is the font weight of the paragraph's text. Choose one among the available options."
+            [matTooltipShowDelay]="SHOW_DELAY"
+            [matTooltipPosition]="POSITION">
+      <option *ngFor="let font_weight of FONT_WEIGHT_OPTIONS"
+              [value]="font_weight"
+              [selected]="font_weight === paragraph.font_weight? 'selected': ''">
+        {{font_weight}}
+      </option>
+    </select>
+  </span>
+
+  <span>
+    <span>
+      Justify content
+    </span>
+    <br>
+    <select #justify_content_selection (change)="onJustifyContentChange(justify_content_selection.value)"
+            matTooltip="This is the method used to align spans within this paragraph. Choose one among the available options."
+            [matTooltipShowDelay]="SHOW_DELAY"
+            [matTooltipPosition]="POSITION">
+      <option *ngFor="let justify_content of JUSTIFY_CONTENT_OPTIONS"
+              [value]="justify_content"
+              [selected]="justify_content === paragraph.justify_content? 'selected': ''">
+        {{justify_content}}
+      </option>
+    </select>
+  </span>
+</p>

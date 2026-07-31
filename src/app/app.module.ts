@@ -36,6 +36,17 @@ import { TextInputEditingComponent } from './editor/form-editing/cell-editing/fo
 import { DropdownEditingComponent } from './editor/form-editing/cell-editing/form-entry-editing/dropdown-editing/dropdown-editing.component';
 import { AnnouncementCellComponent } from './entry-form/table/cell/announcement-cell/announcement-cell.component';
 import { AnnouncementEditingComponent } from './editor/form-editing/cell-editing/form-entry-editing/announcement-editing/announcement-editing.component';
+import { TitleComponent } from './entry-form/title/title.component';
+import { ParagraphComponent } from './entry-form/title/paragraph/paragraph.component';
+import { SpanComponent } from './entry-form/title/paragraph/span/span.component';
+import { TextSpanComponent } from './entry-form/title/paragraph/span/text-span/text-span.component';
+import { ImageSpanComponent } from './entry-form/title/paragraph/span/image-span/image-span.component';
+import { NgOptimizedImage } from "@angular/common";
+import { SpanCreationComponent } from './editor/form-editing/span-creation/span-creation.component';
+import { SpanEditingComponent } from './editor/form-editing/span-editing/span-editing.component';
+import { TextSpanEditingComponent } from './editor/form-editing/span-editing/text-span-editing/text-span-editing.component';
+import { ImageSpanEditingComponent } from './editor/form-editing/span-editing/image-span-editing/image-span-editing.component';
+import { ParagraphEditingComponent } from './editor/form-editing/span-editing/paragraph-editing/paragraph-editing.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +80,16 @@ import { AnnouncementEditingComponent } from './editor/form-editing/cell-editing
     DropdownEditingComponent,
     AnnouncementCellComponent,
     AnnouncementEditingComponent,
+    TitleComponent,
+    ParagraphComponent,
+    SpanComponent,
+    TextSpanComponent,
+    ImageSpanComponent,
+    SpanCreationComponent,
+    SpanEditingComponent,
+    TextSpanEditingComponent,
+    ImageSpanEditingComponent,
+    ParagraphEditingComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +97,8 @@ import { AnnouncementEditingComponent } from './editor/form-editing/cell-editing
     MatTooltipModule,
     FormsModule,
     FontAwesomeModule,
-    IgxInputGroupModule
+    IgxInputGroupModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]

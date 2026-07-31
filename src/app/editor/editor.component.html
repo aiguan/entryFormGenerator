@@ -2,8 +2,10 @@
                   [edit_mode]="edit_mode"
                   [custom_block]="custom_block"
                   [selected_cell]="selected_cell"
+                  [selected_span]="selected_span"
                   (edit_mode_change)="updateEditMode($event)"
                   (custom_block_change)="onCustomBlockChange($event)"
+                  (title_block_change)="onTitleBlockChange($event)"
                   (prev_step)="changeEditingStep(-1)"
                   (next_step)="changeEditingStep(1)">
 

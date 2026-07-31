@@ -1,0 +1,17 @@
+Press one of the buttons below to select the type of span (part of paragraph) you wish to create.
+<p class="spaced-between-container line-wrap">
+  <input class="in-control tf_larger"
+         value="text"
+         [type]="'button'"
+         (click)="createTextSpan()">
+  <input class="in-control tf_larger"
+         value="image"
+         [type]="'button'"
+         (click)="createImageSpan()">
+</p>
+<p class="center-align-container">
+  <input class="in-control tf_larger"
+         value="Back"
+         [type]="'button'"
+         (click)="back.emit()">
+</p>

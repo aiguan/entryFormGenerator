@@ -1,0 +1,21 @@
+<img *ngIf="image_span.width !== 0 && image_span.height !== 0"
+     src="{{image_span.getSource()}}"
+     [width]="image_span.width"
+     [height]="image_span.height"
+     onerror="this.src='assets/image_not_found.png';"
+     alt="logo"/>
+<img *ngIf="image_span.width === 0 && image_span.height !== 0"
+     src="{{image_span.getSource()}}"
+     [height]="image_span.height"
+     onerror="this.src='assets/image_not_found.png';"
+     alt="logo"/>
+<img *ngIf="image_span.width !== 0 && image_span.height === 0"
+     src="{{image_span.getSource()}}"
+     [width]="image_span.width"
+     onerror="this.src='assets/image_not_found.png';"
+     alt="logo"/>
+<img *ngIf="image_span.width === 0 && image_span.height === 0"
+     src="{{image_span.getSource()}}"
+     onerror="this.src='assets/image_not_found.png';"
+     alt="logo"/>
+

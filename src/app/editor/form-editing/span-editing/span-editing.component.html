@@ -1,0 +1,5 @@
+
+<app-paragraph-editing [paragraph]="paragraph"></app-paragraph-editing>
+<div class="hor-line"></div>
+<app-text-span-editing *ngIf="isTextSpan()" [text_span]="getTextSpan()"> </app-text-span-editing>
+<app-image-span-editing *ngIf="isImageSpan()" [image_span]="getImageSpan()"> </app-image-span-editing>

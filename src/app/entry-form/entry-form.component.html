@@ -1,10 +1,15 @@
+<app-title [title]="title_block"
+           [edit_mode]="isTitleEdit()"
+           (on_span_select)="processOnSpanSelect($event)">
+</app-title>
+
 <app-table [table]="egd_search_block"
            [edit_mode]="false"
            (on_cell_describe)="processDescriptionChange($event)">
 </app-table>
 
 <app-table [table]="custom_block"
-           [edit_mode]="edit_mode"
+           [edit_mode]="isFormEdit()"
            (on_cell_select)="processOnCellSelect($event)"
            (on_cell_describe)="processDescriptionChange($event)">
 </app-table>

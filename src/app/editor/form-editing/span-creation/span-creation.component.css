@@ -1,0 +1,6 @@
+.span-sample {
+  background: #d5742f;
+}
+.span-sample:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,78 @@
+<p class="spaced-around-container">
+  <span>
+    <span>
+      Width ({{image_span.getWidth()}}{{image_span.width === 0? '' : 'px'}})
+    </span>
+    <br>
+    <span>
+      <input class="short-input"
+             autocomplete="off"
+             type="number"
+             [(ngModel)]="image_span.width"
+             matTooltip="This is the width of the image. If 0 or lower it will default to 'automatic'."
+             [matTooltipShowDelay]="SHOW_DELAY"
+             [matTooltipPosition]="POSITION"
+             (change)="updateWidth()"/>
+<!--      <select #width_unit_selection (change)="onWidthUnitChange(width_unit_selection.value)"-->
+<!--              matTooltip="This is the unit used for the image width. Choose one among the available options."-->
+<!--              [matTooltipShowDelay]="SHOW_DELAY"-->
+<!--              [matTooltipPosition]="POSITION">-->
+<!--        <option *ngFor="let unit of SIZE_UNITS"-->
+<!--                [value]="unit"-->
+<!--                [selected]="unit === image_span.width_unit? 'selected': ''">-->
+<!--          {{unit}}-->
+<!--        </option>-->
+<!--      </select>-->
+    </span>
+  </span>
+
+
+  <span>
+    <span>
+      Height ({{image_span.getHeight()}}{{image_span.height === 0? '' : 'px'}})
+    </span>
+    <br>
+    <span>
+      <input class="short-input"
+             autocomplete="off"
+             type="number"
+             [(ngModel)]="image_span.height"
+             matTooltip="This is the height of the image. If 0 or lower it will default to 'automatic'"
+             [matTooltipShowDelay]="SHOW_DELAY"
+             [matTooltipPosition]="POSITION"
+             (change)="updateHeight()"/>
+<!--      <select #height_unit_selection (change)="onHeightUnitChange(height_unit_selection.value)"-->
+<!--              matTooltip="This is the unit used for the image height. Choose one among the available options."-->
+<!--              [matTooltipShowDelay]="SHOW_DELAY"-->
+<!--              [matTooltipPosition]="POSITION">-->
+<!--        <option *ngFor="let unit of SIZE_UNITS"-->
+<!--                [value]="unit"-->
+<!--                [selected]="unit === image_span.height_unit? 'selected': ''">-->
+<!--          {{unit}}-->
+<!--        </option>-->
+<!--      </select>-->
+    </span>
+  </span>
+</p>
+
+<p class="spaced-around-container">
+
+  <span>
+    <span>
+      Link to image
+    </span>
+    <br>
+    <span>
+      <input class="long-input"
+             autocomplete="off"
+             type="text"
+             [(ngModel)]="image_span.source"
+
+             matTooltip="Write here the source for the image you want to add. That is write a link to the image."
+             [matTooltipShowDelay]="SHOW_DELAY"
+             [matTooltipPosition]="POSITION"
+             placeholder="link to image."/>
+      </span>
+    </span>
+
+</p>

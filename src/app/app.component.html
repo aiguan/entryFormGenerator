@@ -1,8 +1,10 @@
-<app-entry-form [egd_search_block]="egd_search_block"
+<app-entry-form [title_block]="title_block"
+                [egd_search_block]="egd_search_block"
                 [custom_block]="custom_block"
                 [player_email_block]="player_email_block"
                 [edit_mode]="edit_mode"
                 (on_cell_select)="processOnCellSelect($event)"
+                (on_span_select)="processOnSpanSelect($event)"
                 (on_cell_describe)="setInfoMessage($event)">
 </app-entry-form>
 <div class="editor-container">
@@ -11,12 +13,15 @@
        [innerHTML]="info_message">
   </div>
   <app-editor [style.top]="editor_top"
+              [title_block]="title_block"
               [custom_block]="custom_block"
               [tour_config]="tour_config"
               [selected_cell]="selected_cell"
+              [selected_span]="selected_span"
               [edit_mode]="edit_mode"
               (edit_mode_change)="updateEditMode($event)"
               (custom_block_change)="updateCustomBlock($event)"
+              (title_block_change)="updateTitleBlock($event)"
               (tour_config_change)="updateTourConfig($event)"
               (finish)="downloadDocuments()">
   </app-editor>

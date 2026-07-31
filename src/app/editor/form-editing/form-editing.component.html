@@ -1,25 +1,36 @@
 <fieldset class="bk-fields">
-  <p style="text-align: center">
-    <span class="title">
-      Edit mode {{edit_mode? 'ON' : 'OFF'}}
-    </span>
-    <input class="in-control tf_larger"
-           [value]="getEditModeButtonValue()"
+
+  <p class="title">
+    {{getEditingText()}}
+  </p>
+  <p style="text-align: center; display: flex; justify-content: space-around">
+    <input *ngIf="edit_mode!== 'form'" class="in-control tf_larger"
+           value="Edit form"
            [type]="'button'"
-           (click)="toggleEditMode()">
+           (click)="enterFormEditing()">
+    <input *ngIf="edit_mode!== 'title'" class="in-control tf_larger"
+           value="Edit title"
+           [type]="'button'"
+           (click)="enterTitleEditing()">
+    <input *ngIf="edit_mode !== null" class="in-control tf_larger"
+           value="Exit edit mode"
+           [type]="'button'"
+           (click)="exitEditMode()">
   </p>
 
-  <p *ngIf="!edit_mode">Press the button above in order to enter edit mode.</p>
+  <p *ngIf="edit_mode == null">Press the buttons above in order to decide what to edit.</p>
 
-  <app-cell-creation *ngIf="edit_mode && !new_cell_position.isNull()"
+  <!-- region cell creation -->
+  <app-cell-creation *ngIf="edit_mode == 'form' && !new_cell_position.isNull()"
                      [deleted_cells]="deleted_cells"
                      (create_cell)="onCellCreation($event)"
                      (re_insert_cell)="onCellReInsert($event)"
                      (back)="abortCellCreation()">
   </app-cell-creation>
+  <!-- endregion -->
 
   <!-- region cell editing  -->
-  <div *ngIf="edit_mode && new_cell_position.isNull() && selected_cell.isNull() ">
+  <div *ngIf="edit_mode == 'form' && new_cell_position.isNull() && selected_cell.isNull() ">
     <p>
       Click on one of the cells in the form on the left (middle section) in order to edit it or add a new cell in its vicinity.
       Keep in mind that there are some empty cells used for spacing.
@@ -36,9 +47,10 @@
     <div class="hor-line"></div>
   </div>
 
-  <div *ngIf="edit_mode && new_cell_position.isNull() && !selected_cell.isNull() ">
+  <!-- region cell main editing  -->
+  <div *ngIf="edit_mode == 'form' && new_cell_position.isNull() && !selected_cell.isNull() ">
     <p>
-      Edit/delete the selected cell, add a new cell on its vicinity or press deselect in order to go back.
+      Edit/delete the selected cell, add a new one in its vicinity or press "Back" in order to go back.
     </p>
     <app-cell-editing [cell]="custom_block.getCell(selected_cell)"></app-cell-editing>
     <div class="hor-line"></div>
@@ -50,7 +62,7 @@
                (click)="enterCellCreation(selected_cell.getPositionAbove())">
       </span>
       <p>
-        <span class="spaced-container">
+        <span class="spaced-between-container">
           <input class="in-control tf_larger"
                  value="Add cell left"
                  [type]="'button'"
@@ -84,9 +96,86 @@
     </div>
     <div class="hor-line"></div>
   </div>
+  <!-- endregion  -->
+  <!-- endregion  -->
+
+  <!-- region span creation -->
+  <app-span-creation *ngIf="edit_mode == 'title' && !new_span_position.isNull()"
+                     (create_span)="onSpanCreation($event)"
+                     (back)="abortSpanCreation()">
+  </app-span-creation>
   <!-- endregion -->
 
-  <p class="spaced-container">
+  <!-- region title -->
+  <div *ngIf="edit_mode=='title' && new_span_position.isNull() && selected_span.isNull()">
+    <p>
+      Click on one of the paragraphs in the title section (top) of the form on the left in order to edit it or add new text spans in its vicinity.
+    </p>
+    <p>
+      Alternatively click on the button below in order to add a new paragraph at the bottom of the title section.
+    </p>
+    <p class="center-align-container">
+      <input class="in-control tf_larger"
+             value="Add paragraph"
+             [type]="'button'"
+             (click)="enterSpanCreation(title_block.getNewSpanPosition())">
+    </p>
+    <div class="hor-line"></div>
+  </div>
+
+  <!-- region span main editing  -->
+  <div *ngIf="edit_mode == 'title' && new_span_position.isNull() && !selected_span.isNull()">
+    <p>
+      Edit/delete the selected text span, add a new one in its vicinity or press "Back" in order to go back.
+    </p>
+    <app-span-editing [span]="title_block.getSpan(selected_span)" [paragraph]="title_block.getParagraph(selected_span.getRowIndex())"></app-span-editing>
+    <div class="hor-line"></div>
+    <div>
+      <span class="center-align-container">
+        <input class="in-control tf_larger"
+               value="Add span above"
+               [type]="'button'"
+               (click)="enterSpanCreation(selected_span.getPositionAbove())">
+      </span>
+      <p>
+        <span class="spaced-between-container">
+          <input class="in-control tf_larger"
+                 value="Add span left"
+                 [type]="'button'"
+                 (click)="enterSpanCreation(selected_span.getPositionLeft())">
+          &nbsp;
+          <input class="in-control tf_larger"
+                 value="Remove span"
+                 [type]="'button'"
+                 (click)="removeSelectedSpan()">
+          &nbsp;
+          <input class="in-control tf_larger"
+                 value="Add span right"
+                 [type]="'button'"
+                 (click)="enterSpanCreation(selected_span.getPositionRight())">
+        </span>
+      </p>
+      <span class="center-align-container">
+        <input class="in-control tf_larger"
+               value="Add span below"
+               [type]="'button'"
+               (click)="enterSpanCreation(selected_span.getPositionBelow())">
+      </span>
+      <div class="hor-line"></div>
+
+      <span class="center-align-container">
+        <input class="in-control tf_larger"
+               value="Back"
+               [type]="'button'"
+               (click)="deselectSpan()">
+      </span>
+    </div>
+    <div class="hor-line"></div>
+  </div>
+  <!-- endregion  -->
+  <!-- endregion -->
+
+  <p class="spaced-between-container">
     <span>Once you are done with the editing press the "Next" button.</span>
     <input class="in-control tf_larger"
            value="Next"

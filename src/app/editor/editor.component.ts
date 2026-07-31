@@ -3,6 +3,8 @@ import {TableGenerator} from "../models/table.generator";
 import {CUSTOM_BLOCK} from "../models/custom.block";
 import {GridPosition} from "../models/grid.position";
 import {DEFAULT_TOUR_CONFIG, TourConfig} from "../models/tour.config";
+import {TitleGenerator} from "../models/title.generator";
+import {TITLE_BLOCK} from "../models/title.region";
 
 @Component({
   selector: 'app-editor',
@@ -11,14 +13,17 @@ import {DEFAULT_TOUR_CONFIG, TourConfig} from "../models/tour.config";
 })
 export class EditorComponent{
   @Input() custom_block: TableGenerator = CUSTOM_BLOCK;
+  @Input() title_block: TitleGenerator = TITLE_BLOCK;
   @Input() tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
   @Input() selected_cell: GridPosition = new GridPosition(null, null);
-  @Input() edit_mode: boolean = true;
+  @Input() selected_span: GridPosition = new GridPosition(null, null);
+  @Input() edit_mode: "form" | "title" | null = "form";
 
   @Output() finish = new EventEmitter<void>();
   @Output() custom_block_change = new EventEmitter<TableGenerator>();
+  @Output() title_block_change = new EventEmitter<TitleGenerator>();
   @Output() tour_config_change = new EventEmitter<TourConfig>();
-  @Output() edit_mode_change = new EventEmitter<boolean>();
+  @Output() edit_mode_change = new EventEmitter<"form" | "title"| null>();
 
   editing_step: number = 0;
 
@@ -33,6 +38,11 @@ export class EditorComponent{
   onCustomBlockChange(custom_block: TableGenerator) {
     this.custom_block = custom_block;
     this.custom_block_change.emit(custom_block);
+  }
+
+  onTitleBlockChange(title_block: TitleGenerator) {
+    this.title_block = title_block;
+    this.title_block_change.emit(title_block);
   }
 
   onTourNameChange(tour_name: string) {
@@ -60,7 +70,7 @@ export class EditorComponent{
     this.tour_config_change.emit(this.tour_config);
   }
 
-  updateEditMode(edit_mode: boolean) {
+  updateEditMode(edit_mode:  "form" | "title"| null) {
     this.edit_mode = edit_mode;
     this.edit_mode_change.emit(edit_mode);
   }
