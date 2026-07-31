@@ -12,7 +12,7 @@ const checkbox: Checkbox = new Checkbox(
 
 const info_image: InfoImage = new InfoImage(
   'id_puicon',
-  `UnTick if you wish to remain anonymous on the entry list (only your grade will appear).
+  `Untick if you wish to remain anonymous on the entry list (only your grade will appear).
 A full results list will be submitted to the BGA and used in line with the <a href='https://www.britgo.org/privacynotice'>BGA Privacy Policy<a>.`,
 );
 

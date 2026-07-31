@@ -18,6 +18,14 @@ img, kbd, small,  sub, sup, b,strong, i, em
   background: transparent;
 }
 
+hr {
+    height: 1px !important;
+    color: #ed1d61;
+    background: #ed1d61;
+    font-size: 0;
+    border: 0;
+}
+
 /* BOX SIZING http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html { box-sizing: border-box; }
 
@@ -85,11 +93,12 @@ input[type="checkbox"] {
 }
 
 .icon-i-new {
-  font-weight: bold;  font-style: italic;
-  font-family: "Tex Gyre Bonum", Helvetica, serif;
+  font-weight: bold;
+  font-style: italic;
+  color:blue;
+  padding: 0 5pt 0 5pt;
 }
 
 .tour-title {
 
 }
-

@@ -1,5 +1,3 @@
-;
-
 import {FormEntry} from "./form.entry";
 
 export class Announcement extends FormEntry {

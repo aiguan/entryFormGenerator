@@ -18,7 +18,7 @@ const text_input = new TextInput(
 
 const info_image: InfoImage = new InfoImage(
   'id_slcode',
-  `You can change the 2 character country code if needed.
+  `You can change the two-character country code if needed.
 This will start a new search.`
 );
 

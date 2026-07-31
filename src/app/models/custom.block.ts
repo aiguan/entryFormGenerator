@@ -24,6 +24,11 @@ export const CUSTOM_BLOCK = new TableGenerator(
     new Row([GRADE, STRENGTH]),
     new EmptyRow(),
     new Row([PLAY_ALL]),
+    /*
+    new Row([MEMBER]),
+    new Row([YOUTH]),
+    new Row([FIRST]),
+    */
     new Row([PUBLIC]),
     new Row([PRICE_SEPARATOR]),
     new Row([PRICE_ANNOUNCEMENT]),

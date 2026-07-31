@@ -18,8 +18,8 @@ const text_input: TextInput = new TextInput(
 
 const info_image: InfoImage = new InfoImage(
   'id_clicon',
-  `Type your club code here (1-4) characters.
-Or leave it blank and type your club name.`
+  `Type your club code here (1–4) characters.
+  Or leave it blank and type your club name.`
 );
 
 export const CLUB_CODE = new TwoLineInput(

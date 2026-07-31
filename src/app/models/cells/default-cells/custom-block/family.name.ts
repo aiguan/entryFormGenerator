@@ -19,8 +19,7 @@ const text_input: TextInput = new TextInput(
 const info_image: InfoImage = new InfoImage(
   'id_finfo',
   `You can edit the fields in this section if your EGD details are incorrect.
-A family name may contain hyphen (-), apostrophe('), space ( ), or underscore(_).
-Family name must not be empty.`
+A family name may contain a hyphen (-), apostrophe ('), space ( ), or underscore (_), but must not be empty.`
 );
 
 export const FAMILY_NAME = new TwoLineInput(

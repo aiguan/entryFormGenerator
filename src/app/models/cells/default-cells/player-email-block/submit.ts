@@ -14,9 +14,7 @@ const button = new Button(
 
 const info_image: InfoImage = new InfoImage(
   'id_suicon',
-  `If you need to make a correction after you Submit the form:
-Please just email the Tournament Director.
-Try to avoid Submitting the form again - thanks.`
+  `If you need to make a correction after you submit the form, please just email the Tournament Director and <strong>do not</strong> submit the form again. Thanks!`
 );
 
 export const SUBMIT = new OneLineButton('', button, info_image);

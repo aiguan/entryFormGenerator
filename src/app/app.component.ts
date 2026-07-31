@@ -26,7 +26,7 @@ export class AppComponent {
   title_block: TitleGenerator = TITLE_BLOCK;
   tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
   price_dropdown: Dropdown = PRICE_DROPDOWN.dropdown;
-  DEFAULT_INFO_MESSAGE: string = `Either hover or click<br>on an info icon <span class="icon-i-new"> i </span><br>for help.<br>The fields with a "*" symbol are required.`;
+  DEFAULT_INFO_MESSAGE: string = `Either hover or click on an info icon <span class="icon-i-new"> i </span> for help.<br>The fields with a "*" symbol are required.`;
 
   info_message: string = this.DEFAULT_INFO_MESSAGE;
   edit_mode: "form" | "title"| null = "form";
