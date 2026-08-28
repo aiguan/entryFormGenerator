@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DEFAULT_TOUR_CONFIG, TourConfig} from "../../models/tour.config";
 import {TitleGenerator} from "../../models/title.generator";
-import {reset_title_block, TITLE_BLOCK} from "../../models/title.region";
+import {DEFAULT_TITLE_BLOCK_LOGO_WIDTH, reset_title_block, TITLE_BLOCK} from "../../models/title.region";
 import {ImageSpan} from "../../models/spans/image.span";
+import {TextSpan} from "../../models/spans/text.span";
 
 @Component({
   selector: 'app-tournament-title',
@@ -17,7 +18,7 @@ export class TournamentTitleComponent implements OnInit {
   @Output() next_step = new EventEmitter<void>();
   @Output() tour_title_change = new EventEmitter<string>();
 
-  logo_width: number = 170;
+  logo_width: number = DEFAULT_TITLE_BLOCK_LOGO_WIDTH;
 
   ngOnInit(): void {
     // If the paragraph is the default one we reset the title block width.
@@ -25,8 +26,9 @@ export class TournamentTitleComponent implements OnInit {
     if (paragraphs.length === 1) {
       let spans = paragraphs[0].spans;
       if (spans.length === 2) {
+        let title_span = spans[0];
         let image_span = spans[1];
-        if (image_span instanceof ImageSpan) {
+        if (title_span instanceof TextSpan && image_span instanceof ImageSpan) {
           this.logo_width = image_span.width;
         }
       }
