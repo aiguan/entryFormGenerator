@@ -13,7 +13,7 @@ import {PRICE_DROPDOWN} from "../models/cells/default-cells/custom-block/price.d
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent{
+export class EditorComponent {
   @Input() custom_block: TableGenerator = CUSTOM_BLOCK;
   @Input() title_block: TitleGenerator = TITLE_BLOCK;
   @Input() tour_config: TourConfig = DEFAULT_TOUR_CONFIG;
@@ -28,13 +28,40 @@ export class EditorComponent{
   @Output() tour_config_change = new EventEmitter<TourConfig>();
   @Output() edit_mode_change = new EventEmitter<"form" | "title"| null>();
 
-  editing_step: number = 0;
+  TOURNAMENT_NAME_EDITING_STEP: number  = 0;
+  TOURNAMENT_TITLE_EDITING_STEP: number  = 1;
+  PRICE_EDITING_STEP: number = 2;
+  FORM_EDITING_STEP: number = 3;
+  TOURNAMENT_DIRECTOR_EDITING_STEP: number = 4;
+  TOURNAMENT_DIRECTOR_EMAIL_STEP: number = 5;
+  DRAW_MASTER_STEP: number = 6;
+  CONFIRM_STEP: number = 7;
+  FIRST_EDITING_STEP: number = this.TOURNAMENT_NAME_EDITING_STEP;
+  LAST_EDITING_STEP: number = this.CONFIRM_STEP;
+  editing_step: number = this.TOURNAMENT_NAME_EDITING_STEP;
 
   changeEditingStep(change: number) {
-    this.editing_step = Math.min(Math.max(0, change + this.editing_step), 7);
-    if (this.editing_step !== 3) {
+    let new_editing_step = Math.min(Math.max(this.FIRST_EDITING_STEP, change + this.editing_step), this.LAST_EDITING_STEP);
+
+    // Some editing step changes might interfere with further edits.
+    if (change < 0) {
+      if (new_editing_step === this.TOURNAMENT_TITLE_EDITING_STEP) {
+        if (!confirm("Are you sure you wish to go back to title editing? If you have done further changes to the title those might be lost by performing this action.")) {
+          return;
+        }
+      } else if (new_editing_step === this.PRICE_EDITING_STEP) {
+        if (!confirm("Are you sure you wish to go back to price editing? If you have done further changes to the prices those might be lost by performing this action.")) {
+          return;
+        }
+      }
+    }
+
+    this.editing_step = new_editing_step;
+
+    if (this.editing_step !== this.FORM_EDITING_STEP) {
       this.edit_mode = null;
     }
+    this.edit_mode_change.emit(this.edit_mode);
   }
 
   onFinish() {

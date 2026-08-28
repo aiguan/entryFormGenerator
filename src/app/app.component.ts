@@ -29,7 +29,7 @@ export class AppComponent {
   DEFAULT_INFO_MESSAGE: string = `Either hover or click on an info icon <span class="icon-i-new"> i </span> for help.<br>The fields with a "*" symbol are required.`;
 
   info_message: string = this.DEFAULT_INFO_MESSAGE;
-  edit_mode: "form" | "title"| null = "form";
+  edit_mode: "form" | "title"| null = null;
   selected_cell: GridPosition = new GridPosition(null, null);
   selected_span: GridPosition = new GridPosition(null, null);
   editor_top: string = '0';
