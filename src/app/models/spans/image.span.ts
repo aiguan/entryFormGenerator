@@ -36,9 +36,11 @@ export class ImageSpan extends Span {
 
   override getHTMLCode(): string {
     return `
-        <img src="` + this.getSource() + `"
-             width="` + this.getWidth() + `"
-             height="` + this.getHeight() + `"
-             alt="logo"/>`;
+        <span>
+            <img src="` + this.getSource() + `"
+                 width="` + this.getWidth() + `"
+                 height="` + this.getHeight() + `"
+                 alt="logo"/>
+        </span>`;
   }
 }
